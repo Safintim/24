@@ -12,11 +12,32 @@ def generate_random_array(length_array):
     return list(array)
 
 
+def reverse_right_part_array(array):
+    start = len(array) // 2
+    end = len(array) - 1
+    while start < end:
+        array[start], array[end] = array[end], array[start]
+        start += 1
+        end -= 1
+
+
+def sort_array(array):
+    array.sort()
+    reverse_right_part_array(array)
+
+
 def converter_array_to_start_impulse(array):
     if length_is_odd(len(array)):
-        array.sort()
-        right_part_array = array[len(array) // 2:]
-        array[len(array) // 2:] = right_part_array[::-1]
+        sort_array(array)
         return array
     else:
         return None
+
+# def converter_array_to_start_impulse(array):
+#     if length_is_odd(len(array)):
+#         array.sort()
+#         right_part_array = array[len(array) // 2:]
+#         array[len(array) // 2:] = right_part_array[::-1]
+#         return array
+#     else:
+#         return None
