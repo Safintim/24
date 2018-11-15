@@ -16,8 +16,7 @@ def converter_array_to_start_impulse(array):
     if length_is_odd(len(array)):
         array.sort()
         right_part_array = array[len(array) // 2:]
-        right_part_array.reverse()
-        array[len(array) // 2:] = right_part_array
+        array[len(array) // 2:] = right_part_array[::-1]
         return array
     else:
         return None
