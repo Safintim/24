@@ -16,11 +16,11 @@ class MyTestCase(unittest.TestCase):
         result4 = 'викб'
         result5 = 'ибвк'
 
-        self.assertEqual(result1, t.get_magic_word_from_string(test1))
-        self.assertEqual(result2, t.get_magic_word_from_string(test2))
-        self.assertEqual(result3, t.get_magic_word_from_string(test3))
-        self.assertEqual(result4, t.get_magic_word_from_string(test4))
-        self.assertEqual(result5, t.get_magic_word_from_string(test5))
+        self.assertEqual(result1, t.get_magic_word_from_string1(test1))
+        self.assertEqual(result2, t.get_magic_word_from_string1(test2))
+        self.assertEqual(result3, t.get_magic_word_from_string1(test3))
+        self.assertEqual(result4, t.get_magic_word_from_string1(test4))
+        self.assertEqual(result5, t.get_magic_word_from_string1(test5))
 
     def test_get_magic_word_from_string2(self):
         test1 = 'ая'

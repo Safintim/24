@@ -46,7 +46,7 @@ def make_line_min(symbols, start=0):
     return symbols
 
 
-def make_line_more(symbols):
+def make_least_of_the_great(symbols):
     start = len(symbols)-1
     is_swap = False
     while start and not is_swap:
@@ -62,12 +62,12 @@ def make_line_more(symbols):
     return None
 
 
-def get_magic_word_from_string(string):
+def get_magic_word_from_string1(string):
     if not is_possible(string):
         return False
 
     symbols = list(string)
-    is_magic_word = make_line_more(symbols)
+    is_magic_word = make_least_of_the_great(symbols)
     if not is_magic_word:
         swap_first_with_large(symbols)
         make_line_min(symbols)
