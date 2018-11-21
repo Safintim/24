@@ -10,10 +10,9 @@ def get_all_permutations_string(string):
 
 
 def is_possible(string):
-    if string.count(string[0]) != len(string):
-        return True
-    else:
+    if reversed(string) == string or string.count(string[0]) == len(string):
         return False
+    return True
 
 
 def get_magic_word_from_string(string):
@@ -27,3 +26,49 @@ def get_magic_word_from_string(string):
         return None
 
 
+"""второй способ"""
+
+
+def swap_first_with_large(symbols):
+    max_symbol = max(symbols)
+    for index, symbol in enumerate(symbols):
+        if symbols[0] < symbol <= max_symbol:
+            max_symbol = symbol
+            index_need_symbol = index
+    symbols[index_need_symbol], symbols[0] = symbols[0], max_symbol
+    return symbols
+
+
+def make_line_min(symbols, start=0):
+    right_part_symbols = symbols[start + 1:]
+    right_part_symbols.sort()
+    symbols[start + 1:] = right_part_symbols
+    return symbols
+
+
+def make_line_more(symbols):
+    start = len(symbols)-1
+    is_swap = False
+    while start and not is_swap:
+        for i in range(start, 1, -1):
+            next_symbol = i-1
+            if symbols[start] > symbols[next_symbol]:
+                symbols[start], symbols[next_symbol] = (symbols[next_symbol],
+                                                        symbols[start])
+                # is_swap = True
+                make_line_min(symbols, next_symbol)
+                return symbols
+        start -= 1
+    return None
+
+
+def get_magic_word_from_string(string):
+    if not is_possible(string):
+        return False
+
+    symbols = list(string)
+    is_magic_word = make_line_more(symbols)
+    if not is_magic_word:
+        swap_first_with_large(symbols)
+        make_line_min(symbols)
+    return ''.join(symbols)
