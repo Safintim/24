@@ -1,5 +1,6 @@
 import unittest
 import task6 as t
+import time
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,6 +18,20 @@ class MyTestCase(unittest.TestCase):
         task6_fact = t.factorial(25)
         for i in range(1, 26):
             self.assertEqual(next(task6_fact), self.factorial(i))
+
+    def test_time(self):
+        start1 = time.time()
+        t1 = self.factorial(25)
+        end1 = time.time() - start1
+
+        start2 = time.time()
+        for i in t.factorial(25):
+            t2 = i
+        end2 = time.time() - start2
+        self.assertEqual(t1, t2)
+        print(end2 / end1)
+        print(end1)
+        print(end2)
 
 
 if __name__ == '__main__':
