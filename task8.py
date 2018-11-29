@@ -12,7 +12,7 @@ def get_time(hour, minute):
         if hour == 23:
             print('{} минут к полуночи'.format(minute))
         else:
-            print('{} минут {}ого'.format(minute, (hour + 1) % half_day))
+            print('{} минут {}'.format(minute, (hour + 1) % half_day))
     else:
         if hour + 1 == 1 or hour + 1 == 13:
             print('без {} час'.format(one_hour - minute))
