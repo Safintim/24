@@ -19,7 +19,7 @@ def find_all_indexes_substring(a_str, arr):
 
 def is_second_in_first(delimiter, substring_indexes):
     for row in range(len(substring_indexes)):
-        s = {i+int(delimiter) for i in substring_indexes[row]}
+        s = {i+delimiter for i in substring_indexes[row]}
         if row < len(substring_indexes)-1:
             if not s.intersection(substring_indexes[row+1]):
                 return False
@@ -34,7 +34,7 @@ def is_second_arr_in_first_arr(first_arr, second_arr):
     substring_indexes = find_all_indexes_substring(first_arr, second_arr)
 
     if not (len(substring_indexes) == int(rows2) and
-            is_second_in_first(columns1, substring_indexes)):
+            is_second_in_first(int(columns1), substring_indexes)):
         return False
 
     return True
