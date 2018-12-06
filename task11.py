@@ -15,8 +15,32 @@ def hack(array, count=3):
             part_array = shift_left(part_array)
 
         array[start_index:start_index + count] = part_array
-        print(array)
+        if is_can_sort(array, array_sort):
+            break
+
     return array
+
+
+def is_can_sort(array, array_sort):
+    return (compare_array(swap_head, array, array_sort) or
+            compare_array(swap_tail, array, array_sort))
+
+
+def compare_array(func, array, array_sort):
+    func(array)
+    if array == array_sort:
+        return True
+    else:
+        func(array)
+    return False
+
+
+def swap_head(array):
+    array[0], array[1] = array[1], array[0]
+
+
+def swap_tail(array):
+    array[-2], array[-1] = array[-1], array[-2]
 
 
 def shift_left(array):
@@ -30,8 +54,8 @@ def generate_random_array(n):
     if n > 4:
         array = [i for i in range(1, n+1)]
         shuffle(array)
-        # print(array)
+        print(array)
         return array
 
 
-hack(generate_random_array(7))
+print(hack(generate_random_array(7)))
