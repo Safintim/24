@@ -18,16 +18,18 @@ def is_valid(string):
     elif len(count_all_repetitions) > 2:
         return False
     else:
-
+        n = 0
         for key, value in list(count_reps_symbols.items()):
-            if max_count_reps == value:
-                count_reps_symbols.pop(key)
+            if max_count_reps != value:
+                n += 1
+                if value - 1 != 0 and value - 1 != max_count_reps:
+                    flag = True
+                else:
+                    flag = False
 
-        if len(count_reps_symbols) == 2:
-            return False
         else:
-            _, last_value = count_reps_symbols.popitem()
-            if last_value - 1 == 0 or last_value - 1 == max_count_reps:
-                return True
-            else:
+            if n == 2 or flag:
                 return False
+
+    return True
+
