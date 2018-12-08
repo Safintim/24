@@ -1,7 +1,8 @@
 from random import shuffle
 
 
-def try_ascending_sort(array, array_sort):
+def try_ascending_sort(array):
+    array_sort = sorted(array)
     for i in range(len(array) - 1):
         if array[i] > array[i + 1]:
             elem_out_of_place = array[i]
